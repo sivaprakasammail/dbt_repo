@@ -6,13 +6,13 @@ with customers as (
 
 orders as (
 
-    select * from {{ ref('stg_orders') }} sample (500 rows)
+    select * from {{ ref('stg_orders') }}
 
 ),
 
 payments as (
 
-    select * from {{ ref('stg_payments') }} sample (500 rows)
+    select * from {{ ref('stg_payments') }}
 
 ),
 
