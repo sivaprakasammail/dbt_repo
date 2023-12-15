@@ -15,7 +15,7 @@
 # [START cloudbuild_python_dependencies_yaml]
 steps:
     # Install dependencies
-  - name: 'bash'
+  - name: 'ubuntu'
     script: |
       #!/usr/bin/env bash
       pip install -r requirements.txt
