@@ -20,6 +20,9 @@ steps:
     args: ["install", "-r", "requirements.txt", "--user"]
 # [END cloudbuild_python_dependencies_yaml]
 
+  - name: python
+    entrypoint: pip
+    args: ["freeze"]
 
   # [START cloudbuild_python_tests_yaml]
   # Run unit tests
