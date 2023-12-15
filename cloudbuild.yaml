@@ -15,10 +15,8 @@
 # [START cloudbuild_python_dependencies_yaml]
 steps:
     # Install dependencies
-  - name: 'ubuntu'
+  - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     script: |
-      python -m ensurepip --upgrade
-      pip install -r requirements.txt
       echo $DBT_USER_JSON > google-key.json
       dbt build
     secretEnv: ['DBT_USER_JSON']
