@@ -20,8 +20,18 @@ steps:
     args: ["install", "-r", "requirements.txt", "--user"]
 # [END cloudbuild_python_dependencies_yaml]
 
+
   # [START cloudbuild_python_tests_yaml]
   # Run unit tests
-  - name: python
-    entrypoint: python
-    args: ["-m", "pytest", "--junitxml=${SHORT_SHA}_test_log.xml"]
+  - name: bash
+    script: echo $DBT_USER_JSON > google-key.json
+    secretEnv: ['DBT_USER_JSON']
+  availableSecrets:
+    secretManager:
+    - versionName: projects/734913049536/secrets/dbt-user-json/versions/1
+      env: 'DBT_USER_JSON'
+
+  # [START cloudbuild_python_tests_yaml]
+  # Run unit tests
+  - name: bash
+    script: dbt build
