@@ -14,27 +14,15 @@
 # [START cloudbuild_python_yaml]
 # [START cloudbuild_python_dependencies_yaml]
 steps:
-  # Install dependencies
-  - name: python
-    entrypoint: pip
-    args: ["install", "-r", "requirements.txt", "--user"]
-# [END cloudbuild_python_dependencies_yaml]
-
-  - name: python
-    entrypoint: pip
-    args: ["freeze"]
-
-  # [START cloudbuild_python_tests_yaml]
-  # Run unit tests
-  - name: bash
-    script: echo $DBT_USER_JSON > google-key.json
+    # Install dependencies
+  - name: 'bash'
+    script: |
+      #!/usr/bin/env bash
+      pip install -r requirements.txt
+      echo $DBT_USER_JSON > google-key.json
+      dbt build
     secretEnv: ['DBT_USER_JSON']
-
-  # [START cloudbuild_python_tests_yaml]
-  # Run unit tests
-  - name: bash
-    script: dbt build
-
+      
 availableSecrets:
   secretManager:
   - versionName: projects/734913049536/secrets/dbt-user-json/versions/1
