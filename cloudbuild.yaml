@@ -26,12 +26,13 @@ steps:
   - name: bash
     script: echo $DBT_USER_JSON > google-key.json
     secretEnv: ['DBT_USER_JSON']
-  availableSecrets:
-    secretManager:
-    - versionName: projects/734913049536/secrets/dbt-user-json/versions/1
-      env: 'DBT_USER_JSON'
 
   # [START cloudbuild_python_tests_yaml]
   # Run unit tests
   - name: bash
     script: dbt build
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/734913049536/secrets/dbt-user-json/versions/1
+    env: 'DBT_USER_JSON'
