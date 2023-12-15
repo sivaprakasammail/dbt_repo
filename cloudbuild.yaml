@@ -17,7 +17,7 @@ steps:
     # Install dependencies
   - name: 'ubuntu'
     script: |
-      #!/usr/bin/env bash
+      python -m ensurepip --upgrade
       pip install -r requirements.txt
       echo $DBT_USER_JSON > google-key.json
       dbt build
