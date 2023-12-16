@@ -23,5 +23,5 @@ steps:
       
 availableSecrets:
   secretManager:
-  - versionName: projects/734913049536/secrets/dbt-user-json/versions/1
+  - versionName: projects/734913049536/secrets/dbt-user-json/versions/latest
     env: 'DBT_USER_JSON'
