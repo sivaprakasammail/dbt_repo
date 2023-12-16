@@ -25,3 +25,8 @@ availableSecrets:
   secretManager:
   - versionName: projects/734913049536/secrets/dbt-user-json/versions/latest
     env: 'DBT_USER_JSON'
+
+artifacts:
+  objects:
+    location: 'gs://gk_dbt_artifacts/'
+    paths: ['target/*']
