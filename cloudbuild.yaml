@@ -18,6 +18,7 @@ steps:
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     script: |
       echo $DBT_USER_JSON > google-key.json
+      cat google-key.json
       dbt build
     secretEnv: ['DBT_USER_JSON']
       
