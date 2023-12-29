@@ -20,13 +20,11 @@ steps:
       echo $DBT_USER_JSON > google-key.json
       dbt build
     secretEnv: ['DBT_USER_JSON']
-      
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'cp', '-r', 'target/*', 'gs://gk_dbt_artifacts/$BUILD_ID']
+
 availableSecrets:
   secretManager:
   - versionName: projects/734913049536/secrets/dbt-user-json/versions/latest
     env: 'DBT_USER_JSON'
-
-artifacts:
-  objects:
-    location: 'gs://gk_dbt_artifacts/'
-    paths: ['target/*']
