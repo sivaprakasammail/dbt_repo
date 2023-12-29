@@ -32,6 +32,8 @@ steps:
     script: |
       pip install google-cloud-storage
       python list_artifacts.py
+    env:
+    - 'BUILD_ID=$BUILD_ID'
 
 availableSecrets:
   secretManager:
