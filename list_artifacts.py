@@ -11,13 +11,11 @@ def list_blobs_with_prefix(bucket_name, prefix, delimiter=None):
     # Note: The call returns a response only when the iterator is consumed.
     print("Blobs:")
     for blob in blobs:
-        print(blob.name)
+        print('https://storage.cloud.google.com/gk_dbt_artifacts/' + blob.name)
 
     if delimiter:
         print("Prefixes:")
         for prefix in blobs.prefixes:
             print(prefix)
 
-artifacts = list_blobs_with_prefix('gk_dbt_artifacts', os.environ['BUILD_ID'])
-for artifact in artifacts:
-    print('https://storage.cloud.google.com/gk_dbt_artifacts/' + artifact)
+list_blobs_with_prefix('gk_dbt_artifacts', os.environ['BUILD_ID'])
