@@ -25,6 +25,9 @@ steps:
   - name: 'gcr.io/cloud-builders/gsutil'
     args: ['-m', 'cp', '-r', 'target/*', 'gs://gk_dbt_artifacts/$BUILD_ID']
 
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['ls', '-r', 'gs://gk_dbt_artifacts/$BUILD_ID/**']
+
 availableSecrets:
   secretManager:
   - versionName: projects/734913049536/secrets/dbt-user-json/versions/latest
