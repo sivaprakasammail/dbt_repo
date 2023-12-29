@@ -29,6 +29,7 @@ steps:
     args: ['ls', '-r', 'gs://gk_dbt_artifacts/$BUILD_ID/**']
 
   - name: 'python'
+    id: LIST_ARTIFACTS
     script: |
       pip install google-cloud-storage
       python list_artifacts.py
