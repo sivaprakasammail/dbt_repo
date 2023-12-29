@@ -18,4 +18,6 @@ def list_blobs_with_prefix(bucket_name, prefix, delimiter=None):
         for prefix in blobs.prefixes:
             print(prefix)
 
-print(list_blobs_with_prefix('gk_dbt_artifacts', os.environ['BUILD_ID']))
+artifacts = list_blobs_with_prefix('gk_dbt_artifacts', os.environ['BUILD_ID'])
+for artifact in artifacts:
+    print('https://storage.cloud.google.com/gk_dbt_artifacts/' + artifact)
