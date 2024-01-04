@@ -33,6 +33,7 @@ steps:
   - name: 'python'
     id: PRE2
     script: |
+      echo $(ls)
       cd target
       echo $(ls)
     
