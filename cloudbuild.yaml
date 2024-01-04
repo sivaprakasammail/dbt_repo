@@ -25,6 +25,7 @@ steps:
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT
     script: |
+      echo "testing"
       dbt build
     allowFailure: true
 
