@@ -34,7 +34,7 @@ steps:
     id: PRE2
     script: |
       cd target
-      ls
+      echo $(ls)
     
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT_RUN
