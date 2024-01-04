@@ -22,6 +22,7 @@ steps:
   - name: 'python'
     id: PRE
     script: |
+      ls
       echo $(date +%s) > start_time.txt
       echo $DBT_USER_JSON > google-key.json
       python pre_run_tasks.py
