@@ -17,7 +17,6 @@ steps:
   - name: 'python'
     id: PRE
     script: |
-      pip install -r requirements.txt
       python pre_run_tasks.py
     secretEnv: ['DBT_USER_JSON']
     allowFailure: true
@@ -32,6 +31,7 @@ steps:
   - name: 'python'
     id: POST
     script: |
+      pip install -r requirements.txt
       python post_run_tasks.py
     env:
     - 'BUILD_ID=$BUILD_ID'
