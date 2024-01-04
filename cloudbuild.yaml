@@ -33,10 +33,10 @@ steps:
     id: DBT_RUN
     script: |
       sh get_elapsed_seconds.sh
-      dbt ls --select state:modified --state prod-run-artifacts/
-      dbt seed --select state:modified+ --state prod-run-artifacts/
-      dbt snapshot -s state:modified --state prod-run-artifacts/
-      dbt run --full-refresh -s state:modified+ --state prod-run-artifacts/
+      dbt ls --select state:modified --state prod-run-artifacts/ &&
+      dbt seed --select state:modified+ --state prod-run-artifacts/ &&
+      dbt snapshot -s state:modified --state prod-run-artifacts/ &&
+      dbt run --full-refresh -s state:modified+ --state prod-run-artifacts/ &&
       dbt test -s state:modified+ --state prod-run-artifacts/
     allowFailure: true
 
