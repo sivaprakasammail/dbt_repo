@@ -33,7 +33,11 @@ steps:
     id: DBT_RUN
     script: |
       sh get_elapsed_seconds.sh
-      dbt run
+      dbt ls --select state:modified
+      dbt seed --select state:modified+
+      dbt snapshot -s state:modified
+      dbt run --full-refresh -s state:modified+
+      dbt test -s state:modified+
     allowFailure: true
 
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
