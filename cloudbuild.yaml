@@ -27,7 +27,7 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gsutil'
     id: PULL_ARTIFACTS
-    args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './target']
+    args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './target/']
 
 
   - name: 'python'
