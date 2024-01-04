@@ -17,7 +17,7 @@ steps:
 
   - name: 'python'
     script: |
-      pip install requirements.txt
+      pip install -r requirements.txt
       python pre_run_tasks.py
       dbt build
       python post_run_tasks.py
