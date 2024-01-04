@@ -15,7 +15,7 @@
 # [START cloudbuild_python_dependencies_yaml]
 steps:
 
-  - name: 'python'
+  - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     script: |
       pip install -r requirements.txt
       python pre_run_tasks.py
