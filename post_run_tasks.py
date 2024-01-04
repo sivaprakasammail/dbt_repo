@@ -29,7 +29,16 @@ def upload_from_directory(directory_path: str, dest_bucket_name: str, dest_blob_
             blob = bucket.blob(remote_path)
             blob.upload_from_filename(local_file)
 
+def upload_file(file_path: str, dest_bucket_name: str, dest_blob_name: str):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(dest_bucket_name)
+    remote_path = f'{dest_blob_name}/'
+    if os.path.isfile(file_path):
+        blob = bucket.blob(remote_path)
+        blob.upload_from_filename(file_path)
 
 if __name__ == "__main__":
     upload_from_directory('target', 'gk_dbt_artifacts', os.environ['BUILD_ID'])
+    upload_file('target/manifest.json', 'gk_dbt_state', 'target')
+    upload_file('target/partial_parse.msgpack', 'gk_dbt_state', 'target')
     list_blobs_with_prefix('gk_dbt_artifacts', os.environ['BUILD_ID'])
