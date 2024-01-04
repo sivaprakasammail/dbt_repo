@@ -15,8 +15,7 @@
 # [START cloudbuild_python_dependencies_yaml]
 steps:
 
-  - %anchor_test
-    name: 'python'
+  - name: 'python'
     id: PRE
     script: |
       ls
@@ -26,8 +25,8 @@ steps:
       mkdir target
     secretEnv: ['DBT_USER_JSON']
 
-  - <<: *anchor_test
-    name: 'gcr.io/cloud-builders/gsutil'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: PULL_STATE_ARTIFACTS
     args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './target/']
     
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
