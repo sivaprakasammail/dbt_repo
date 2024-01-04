@@ -18,8 +18,8 @@ steps:
   - name: 'python'
     script: |
       pip install -r requirements.txt
-      pip freeze
       python pre_run_tasks.py
+      cat google-key.json
       dbt build
       python post_run_tasks.py
     secretEnv: ['DBT_USER_JSON']
