@@ -28,8 +28,18 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gsutil'
     id: PULL_ARTIFACTS
-    args: ['-m', 'cp', '-r', 'gs://gk_dbt_artifacts/master', './target']
+    args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/', './target']
 
+
+  - name: 'python'
+    id: PRE2
+    script: |
+      cd target
+      ls
+    secretEnv: ['DBT_USER_JSON']
+    allowFailure: true
+
+    
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT_RUN
     script: |
