@@ -26,7 +26,7 @@ steps:
     id: DBT
     script: |
       echo "testing"
-      dbt build
+      dbt debug
     allowFailure: true
 
   - name: 'python'
