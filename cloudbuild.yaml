@@ -26,16 +26,8 @@ steps:
     secretEnv: ['DBT_USER_JSON']
 
   - name: 'gcr.io/cloud-builders/gsutil'
-    id: PULL_ARTIFACTS
+    id: PULL_STATE_ARTIFACTS
     args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './target/']
-
-
-  - name: 'python'
-    id: PRE2
-    script: |
-      echo $(ls)
-      cd target
-      echo $(ls)
     
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT_RUN
