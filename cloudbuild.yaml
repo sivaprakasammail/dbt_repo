@@ -24,7 +24,6 @@ steps:
       python pre_run_tasks.py
       mkdir target
     secretEnv: ['DBT_USER_JSON']
-    allowFailure: true
 
   - name: 'gcr.io/cloud-builders/gsutil'
     id: PULL_ARTIFACTS
@@ -36,9 +35,6 @@ steps:
     script: |
       cd target
       ls
-    secretEnv: ['DBT_USER_JSON']
-    allowFailure: true
-
     
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT_RUN
