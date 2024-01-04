@@ -14,6 +14,11 @@
 # [START cloudbuild_python_yaml]
 # [START cloudbuild_python_dependencies_yaml]
 steps:
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    id: PULL_ARTIFACTS
+    args: ['-m', 'cp', '-r', 'gs://gk_dbt_artifacts/master', '.']
+
   - name: 'python'
     id: PRE
     script: |
