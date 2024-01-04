@@ -18,7 +18,6 @@ steps:
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     script: |
       python pre_run_tasks.py
-      cat google-key.json
       dbt build
       python post_run_tasks.py
     secretEnv: ['DBT_USER_JSON']
