@@ -22,22 +22,22 @@ steps:
       echo $(date +%s) > start_time.txt
       echo $DBT_USER_JSON > google-key.json
       python pre_run_tasks.py
-      mkdir target
+      mkdir prod-run-artifacts
     secretEnv: ['DBT_USER_JSON']
 
   - name: 'gcr.io/cloud-builders/gsutil'
     id: PULL_STATE_ARTIFACTS
-    args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './target/']
+    args: ['-m', 'cp', '-r', 'gs://gk_dbt_state/target/*', './prod-run-artifacts/']
     
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
     id: DBT_RUN
     script: |
       sh get_elapsed_seconds.sh
-      dbt ls --select state:modified
-      dbt seed --select state:modified+
-      dbt snapshot -s state:modified
-      dbt run --full-refresh -s state:modified+
-      dbt test -s state:modified+
+      dbt ls --select state:modified --state prod-run-artifacts/
+      dbt seed --select state:modified+ --state prod-run-artifacts/
+      dbt snapshot -s state:modified --state prod-run-artifacts/
+      dbt run --full-refresh -s state:modified+ --state prod-run-artifacts/
+      dbt test -s state:modified+ --state prod-run-artifacts/
     allowFailure: true
 
   - name: 'ghcr.io/dbt-labs/dbt-bigquery:1.7.2'
