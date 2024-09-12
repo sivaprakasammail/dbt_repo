@@ -53,4 +53,4 @@ final as (
 
 )
 
-select * from final where amount > 10
+select * from final where amount > 20
