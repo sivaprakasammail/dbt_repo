@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: jaffle shop tables
+    database: raw
+    schema: jaffle_shop
+    #loaded_at_field: <column_name>
+    tables:
+      - name: customers
+        columns: 
+          - name: id
+            tests:
+              - not_null
+              - unique
+      - name: orders
+        columns: 
+          - name: id
+            tests:
+              - not_null
+              - unique
+              
