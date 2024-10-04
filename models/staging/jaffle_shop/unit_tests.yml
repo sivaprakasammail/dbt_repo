@@ -1,0 +1,19 @@
+unit_tests:
+  - name: test_mapping_status
+    description: "Ensure order status is mapped correctly"
+    model: stg_jaffle_shop__orders
+    given:
+      - input: source('jaffle_shop',  'orders')
+        rows:
+          - {id: 1, status: placed}
+          - {id: 2, status: shipped}
+          - {id: 3, status: returned}
+          - {id: 4, status: return_pending}
+          - {id: 5, status: completed}
+    expect:
+      rows:
+        - {order_id: 1, status: placed}
+        - {order_id: 2, status: shipped}
+        - {order_id: 3, status: returned}
+        - {order_id: 4, status: returned}
+        - {order_id: 5, status: completed}
