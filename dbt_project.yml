@@ -24,5 +24,3 @@ models:
       materialized: table
       staging:
         materialized: view
-        stripe:
-          materialized: table
