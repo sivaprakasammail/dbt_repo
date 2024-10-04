@@ -17,3 +17,17 @@ unit_tests:
         - {order_id: 3, status: returned}
         - {order_id: 4, status: returned}
         - {order_id: 5, status: completed}
+  - name: test_full_name
+    description: "Check spelling is correct on full names"
+    model: stg_jaffle_shop__customers
+    given:
+      - input: source('jaffle_shop',  'customers')
+        rows:
+          - {first_name: Michael, last_name: P.}
+          - {first_name: MICHAEL, last_name: P}
+          - {first_name: MIChaEL, last_name: Peter}
+    expect:
+      rows:
+        - {full_name: "Michael P."}
+        - {full_name: "Michael P"}
+        - {full_name: "Michael Peter"}
