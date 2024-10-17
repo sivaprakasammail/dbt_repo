@@ -1,0 +1,22 @@
+version: 2
+
+models: 
+  - name: wh_customers
+    access: public 
+    config:
+      group: example_group
+    meta:
+      owner: 'example@octoenergy.com'
+      team_owner: 'example_team@octoenergy.com'
+    description: Table containing accumulated customer information with addition order & payment
+      information.
+    columns:
+      - name: customer_id
+        description: Unique customer identification number 
+        tests:
+          - unique
+          - not_null
+      - name: first_name 
+        description: Hashed version of the customer's first name 
+      - name: last_name
+        description: Hashed version of the customer's last name
