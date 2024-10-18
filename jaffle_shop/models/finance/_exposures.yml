@@ -10,6 +10,6 @@ exposures:
     type: dashboard
     url: https://inksacio.eks.octopus.engineering/my_certification_dashboard/
     owner: 
-      email: 'example@octoenergy.com'
+      email: 'example.person@octoenergy.com'
     depends_on:
       - ref('fnl_finance_order_returns')

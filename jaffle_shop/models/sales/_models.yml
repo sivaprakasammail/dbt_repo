@@ -5,7 +5,7 @@ models:
     config:
       tags: [access:public]
     meta:
-      owner: 'example@octoenergy.com'
+      owner: 'example.person@octoenergy.com'
       team_owner: 'example_owner@octoenergy.com'
     description: Table on the number of customers who have made their first orders per month.
     columns:

@@ -6,7 +6,7 @@ models:
     config:
       group: example_group
     meta:
-      owner: 'example@octoenergy.com'
+      owner: 'example.person@octoenergy.com'
       team_owner: 'example_team@octoenergy.com'
       sensitive: true
     description: Table containing customer name information with PII included.
@@ -26,7 +26,7 @@ models:
     config:
       group: example_group
     meta:
-      owner: 'example@octoenergy.com'
+      owner: 'example.person@octoenergy.com'
       team_owner: 'example_team@octoenergy.com'
     description: Table containing customer name information with PII hashed
     columns:
@@ -45,7 +45,7 @@ models:
     config:
       group: example_group
     meta:
-      owner: 'example@octoenergy.com'
+      owner: 'example.person@octoenergy.com'
       team_owner: 'example_team@octoenergy.com'
     description: Table containing customer orders.
     columns:
@@ -62,7 +62,7 @@ models:
     config:
       group: example_group
     meta:
-      owner: 'example@octoenergy.com'
+      owner: 'example.person@octoenergy.com'
       team_owner: 'example_team@octoenergy.com'
     description: Table containing customer payments.
     columns:
