@@ -1,0 +1,12 @@
+export SNOWFLAKE_ACCOUNT=
+export SNOWFLAKE_USER=
+export SNOWFLAKE_PW=
+# we could do private keys here 
+export SNOWFLAKE_ROLE=
+export SNOWFLAKE_DB=
+export SNOWFLAKE_SCHEMA=
+export SNOWFLAKE_WAREHOUSE=
+
+
+
+

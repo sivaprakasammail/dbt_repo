@@ -80,3 +80,16 @@ models:
         description: Amount of the order (AUD) paid for by gift card
         tests:
           - not_null
+
+  - name: prepare_train_test
+
+    # https://docs.getdbt.com/docs/build/python-models
+    description: train test example
+
+    # Configure in ways that feel intuitive and familiar
+    config:
+      materialized: table
+      target_name: "{{ target.name }}"
+      model_type: "{{ var('MODEL_TYPE','whatever') }}"
+      split_percent: "{{ var('MODEL_TYPE','whatever') }}"
+      tags: ['python']

@@ -1,0 +1,25 @@
+dbt_demo:
+  outputs:
+    dev:
+      account: '{{env_var(''SNOWFLAKE_ACCOUNT'')}}'
+      database: '{{env_var(''SNOWFLAKE_DB'')}}'
+      password: '{{env_var(''SNOWFLAKE_PW'')}}'
+      authenticator: username_password_mfa
+      role: '{{env_var(''SNOWFLAKE_ROLE'')}}'
+      schema: '{{env_var(''SNOWFLAKE_SCHEMA'')}}'
+      threads: 1
+      type: snowflake
+      user: '{{env_var(''SNOWFLAKE_USER'')}}'
+      warehouse: '{{env_var(''SNOWFLAKE_WAREHOUSE'')}}'
+      client_session_keep_alive: True
+      query_tag: dbt_demo
+
+      # optional
+      connect_retries: 0 # default 0
+      connect_timeout: 10 # default: 10
+      retry_on_database_errors: False # default: false
+      retry_all: False  # default: false
+      reuse_connections: True # default: True if client_session_keep_alive is False, otherwise None
+
+
+  target: dev
