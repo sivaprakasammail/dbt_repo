@@ -84,12 +84,28 @@ models:
   - name: prepare_train_test
 
     # https://docs.getdbt.com/docs/build/python-models
+    description: train test prepare 
+
+    # Configure in ways that feel intuitive and familiar
+    config:
+      materialized: table
+      target_name: "{{ target.name }}"
+      model_type: "{{ var('model_type','whatever') }}"
+      split_percent: "{{ var('split_percent','.8') }}"
+      tags: ['python','dbt']
+  
+  - name: add_response
+    description: add the response label 
+
+  - name: train_test
+
+    # https://docs.getdbt.com/docs/build/python-models
     description: train test example
 
     # Configure in ways that feel intuitive and familiar
     config:
       materialized: table
       target_name: "{{ target.name }}"
-      model_type: "{{ var('MODEL_TYPE','whatever') }}"
-      split_percent: "{{ var('MODEL_TYPE','whatever') }}"
-      tags: ['python']
+      model_type: "{{ var('model_type','xgboost') }}"
+      split_percent: "{{ var('split_percent','.8') }}"
+      tags: ['python','dbt']
