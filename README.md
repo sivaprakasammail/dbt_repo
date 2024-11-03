@@ -50,7 +50,7 @@ $ dbt seed
 
 7. Run the models:
 ```bash
-$ dbt run
+$ dbt run --vars '{"split_percent":".7"}'
 ```
 
 > **NOTE:** If this steps fails, it might mean that you need to make small changes to the SQL in the models folder to adjust for the flavor of SQL of your target database. Definitely consider this if you are using a community-contributed adapter.

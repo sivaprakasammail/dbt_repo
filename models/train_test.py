@@ -16,13 +16,14 @@ def model(dbt, session):
     #you can add a stage with imports = ['@stage_name/filename]
     dbt.config(materialized="table", packages=['holidays','pandas','scikit-learn','joblib'])
     train_data_df = dbt.ref("agg_to_customer_lvl").to_pandas()
+    split_per = float(dbt.config.get('split_percent'))
   # Print a sample of the dataframe to standard output.
     
     X = train_data_df.drop('VALUE_RESPONSE', axis = 1)
     y = train_data_df['VALUE_RESPONSE']
 
     # Split dataset into training and test
-    test_size_ = 1.0 - float('.8')
+    test_size_ = 1.0 - split_per
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size_, random_state = 50)
  
     #Preprocess numeric columns
