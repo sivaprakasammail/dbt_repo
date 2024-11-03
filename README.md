@@ -23,6 +23,7 @@ What this repo _is not_:
 
 ### Running this project
 To get up and running with this project:
+>This was build on arm mac, otherwise packages are `dbt-core` & `dbt-snowflake` 
 1. 
 ```python
 python -m venv venv 
