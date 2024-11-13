@@ -34,8 +34,10 @@ customer_payments as (
 
     select
         orders.customer_id,
-        sum(amount) as total_amount
-
+        sum(amount) as total_amount,
+        min(amount) as min_amount,
+        max(amount) as max_amount,
+        avg(amount) as avg_amount
     from payments
 
     left join orders using (order_id)
