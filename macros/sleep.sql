@@ -1,9 +1,9 @@
 {% macro sleep(seconds=1) %}
-    */{# 
-    Debugging macro to wait for X seconds. Example:
-    
-    dbt run-operation sleep --args 'seconds: 60'
-    #}*/
+    /* {# 
+      Debugging macro to wait for X seconds. Example:
+
+      dbt run-operation sleep --args 'seconds: 60'
+    #} */
     {% do print('sleeping for ' ~ seconds ~ ' seconds') %}
     {% set query %}
         call system$wait({{ seconds }}, 'SECONDS');
