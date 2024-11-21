@@ -1,7 +1,7 @@
 name: 'jaffle_shop'
 
 config-version: 2
-version: '0.1'
+version: '1.5.0'
 
 profile: 'jaffle_shop'
 
@@ -21,6 +21,12 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   jaffle_shop:
-      materialized: table
+      +materialized: table
       staging:
-        materialized: view
+        +materialized: view
+      marts:
+      +materialized: table
+        core:
+        +schema: core
+        intermediate:
+          +schema: core_intermediate
