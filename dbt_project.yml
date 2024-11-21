@@ -1,7 +1,7 @@
 name: 'jaffle_shop'
 
 config-version: 2
-version: '1.5.0'
+version: '1.8.0'
 
 profile: 'jaffle_shop'
 
@@ -21,17 +21,10 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   jaffle_shop:
-    # Default materialization for the project
-    +materialized: table
-
     staging:
-      +materialized: view  # All models in the staging folder will be views by default
-
+      +materialized: view
     marts:
-      # Default materialization for marts folder
-      +materialized: table
-
       core:
-        +schema: core  # Models in the marts/core folder will use the "core" schema
+        +materialized: table
         intermediate:
-          +schema: core_intermediate  # Models in marts/core/intermediate use "core_intermediate"
+          +materialized: table
