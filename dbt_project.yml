@@ -1,7 +1,7 @@
 name: 'jaffle_shop'
 
 config-version: 2
-version: '0.1'
+version: '1.8.0'
 
 profile: 'jaffle_shop'
 
@@ -13,14 +13,18 @@ macro-paths: ["macros"]
 
 target-path: "target"
 clean-targets:
-    - "target"
-    - "dbt_modules"
-    - "logs"
+  - "target"
+  - "dbt_modules"
+  - "logs"
 
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   jaffle_shop:
-      materialized: table
-      staging:
-        materialized: view
+    staging:
+      +materialized: view
+    marts:
+      core:
+        +materialized: table
+        intermediate:
+          +materialized: table
